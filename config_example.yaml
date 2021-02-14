@@ -1,0 +1,47 @@
+# EXAMPLE CONFIG FILE FOR MULTI-GENOME OLIGO DESIConnection reset by 128.120.143.134 port 22
+AAAAAAAAAAAAAAAAB
+# target coordinates for oligo design
+
+target_bed:
+- regions.bed
+
+# genome to which the target coordinates correspond
+
+source_genome:
+- hg38.noalt.fa
+
+# all genomes to screen for homologous sequences (probably this will also include the source genome)
+
+all_genomes:
+- hg38.noalt.fa
+- panTro6.fa
+
+# shorthand for to each of the genomes for file and sequence names (same order as all_genomes)
+
+names:
+- human
+- chimp
+
+# filter parameters for doubleFiltBlat.py (for each genome, same order as all_genomes)
+# the 6 numbers are...
+# first pass min %id, first pass min alignment length (for 200mers), first pass max number of alignments, second pass min %id, second pass min alignment length, second pass max number of alig$
+
+filter_parameters:
+- 90 190 4 98 195 4
+- 90 190 1 98 195 1
+
+# number of scramble control sequences to generate
+
+n_controls: 1000
+
+# universal priming sequence to add to each end of the oligos
+
+universal_priming_seq_fiveprime: AGGACCGGATCAACT
+
+universal_priming_seq_threeprime: CATTGCGTGAACCGA
+
+# restriction sites to filter out of final oligos
+
+re_sites:
+- ACCGGT
+- CCTGCAGG
