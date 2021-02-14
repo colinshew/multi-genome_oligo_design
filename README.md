@@ -80,6 +80,8 @@ The filtering parameters can be adjusted as needed; check the log information ge
 ./doubleFiltBlat.py -h
 ```
 
+Finally, the three accessory Python scripts should be saved in a directory named `scripts`.
+
 When ready, run the Snakefile:
 
 ```
