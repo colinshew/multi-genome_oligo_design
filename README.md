@@ -7,14 +7,16 @@ This Snakefile takes a BED input and finds homologous 200mer sequences from thes
 
 In brief, intervals are merged, divided into overlapping 200-base windows, and the underlying sequence is extracted. Each "tile" is assigned a strand based on the nearest transcribed feature and aligned to each provided genome with BLAT. Alignments are filtered in two steps: a first pass keeps oligos with fewer N good alignments, and a second pass can be tuned to be more stringent (this rescues reads from duplicated regions that have multiple "good" alignments but may still generate spurious hits; the desired alignment percent identity, length, and number of hits can be set for each genome). Finally, only oligos with alignments passing the filter in all genomes are retained. These sequences, as well as a set of scrambled controls, are given universal priming sequences and screened for restriction enzyme cut sites.
 
+Contact: Colin Shew (cshew@ucdavis.edu)
+
 ## Dependencies
 
-Snakefile developed with the following:
+Snakefile developed with the following software:
 - BLAT (0.35)
 - Bedtools (2.25.0) 
 - Python (3.6.7)
 
-The the following Python libraries are also used:
+These Python libraries are also required:
 - SeqIO (1.72)
 - pandas (0.20.3)
 
@@ -85,7 +87,7 @@ Finally, the three accessory Python scripts should be saved in a directory named
 When ready, run the Snakefile:
 
 ```
-snakemake --configfile config.yaml
+snakemake --configfile config.yaml -s oligo_design.snakefile
 ```
 
 The final filtered oligos will be savd in the working directory as `final_sequences.fa`!
